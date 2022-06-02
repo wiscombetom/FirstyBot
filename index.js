@@ -34,7 +34,7 @@ function reply_message(original, message) {
 }
 
 async function send_welcome_message(guild, member) {
-	const welcomeImage = await generateImage(member)
+	const welcomeImage = await generateImage(member.user)
 	const welcomeChannel = guild.channels.cache.get(welcomeChannelId)
 	const welcomeMessage = `<@${member.id}> Welcome to the server!`
 	welcomeChannel.send({
