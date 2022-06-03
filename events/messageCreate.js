@@ -1,5 +1,3 @@
-const Discord = require("discord.js")
-
 module.exports = {
 	name: "messageCreate",
 	run: async function runAll (bot, message) {
@@ -26,6 +24,8 @@ module.exports = {
 		}
 
 		const member = message.member
+		console.log(owners)
+		console.log(member.id)
 		if (command.devOnly && !owners.includes(member.id)) {
 			return message.reply("This command is only available to the bot owners")
 		}
@@ -48,7 +48,5 @@ module.exports = {
 				console.error(err)
 			}
 		}
-
-		// console.log(`Logged in as ${bot.client.user.tag}`)
 	}
 }
