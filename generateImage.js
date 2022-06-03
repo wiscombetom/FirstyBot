@@ -26,11 +26,11 @@ const generateImage = async (user) => {
 	const ctx = canvas.getContext("2d")
 	const bgimgobj = await Canvas.loadImage(bgimgurl)
 	const avimgobj = await Canvas.loadImage(useravat)
-	
+
 	ctx.drawImage(bgimgobj, -96, 0)
 	ctx.fillStyle = "rgba(0, 0, 0, 0.8)"
 	ctx.fillRect(canvasDimensions.margin, canvasDimensions.margin, canvasDimensions.width - canvasDimensions.margin * 2, canvasDimensions.height - canvasDimensions.margin * 2)
-	
+
 	ctx.save()
 	ctx.beginPath()
 	ctx.arc(avatar.x + avatar.size / 2, avatar.y + avatar.size / 2, avatar.size / 2, 0, Math.PI * 2, true)
@@ -44,10 +44,10 @@ const generateImage = async (user) => {
 
 	ctx.font = "50px Sans"
 	ctx.fillText(`Welcome`, canvasDimensions.width / 2, canvasDimensions.margin + 70)
-	
+
 	ctx.font = "60px Sans"
 	ctx.fillText(`${username}#${userdisc}`, canvasDimensions.width / 2, canvasDimensions.height - canvasDimensions.margin - 125)
-	
+
 	ctx.font = "40px Sans"
 	ctx.fillText(`to the server`, canvasDimensions.width / 2, canvasDimensions.height - canvasDimensions.margin - 50)
 
