@@ -1,6 +1,6 @@
 module.exports = {
-	name: "messageCreate",
-	run: async function runAll (bot, message) {
+	name: 'messageCreate',
+	run: async function runAll(bot, message) {
 		const { client, prefix, owners } = bot
 
 		if (!message.guild) {
@@ -24,29 +24,29 @@ module.exports = {
 		}
 
 		const member = message.member
-		console.log(owners)
-		console.log(member.id)
 		if (command.devOnly && !owners.includes(member.id)) {
-			return message.reply("This command is only available to the bot owners")
+			return message.reply('This command is only available to the bot owners')
 		}
 
 		if (command.permissions && member.permissions.missing(command.permissions).length !== 0) {
-			return message.reply("You don't have the permissions to use this command")
+			return message.reply('You don\'t have the permissions to use this command')
 		}
 
 		try {
 			await command.run({
-				...bot, message, args
+				...bot, message, args,
 			})
-		} catch (err) {
+		}
+		catch (err) {
 			let errMessage = err.toString()
 
-			if (errMessage.startsWith("?")) {
+			if (errMessage.startsWith('?')) {
 				errMessage = errMessage.slice(1)
 				await message.reply(errMessage)
-			} else {
+			}
+			else {
 				console.error(err)
 			}
 		}
-	}
+	},
 }

@@ -1,4 +1,4 @@
 module.exports = {
-	commands: require("./commands"),
-	events: require("./events")
+	commands: require('./commands'),
+	events: require('./events'),
 }

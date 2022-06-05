@@ -1,9 +1,9 @@
-const { Collection } = require("discord.js")
-const { getJsFiles, getFile } = require("../util/functions")
+const { Collection } = require('discord.js')
+const { getJsFiles, getFile } = require('../util/functions')
 
 module.exports = (client) => {
 	client.events = new Collection()
-	const eventFiles = getJsFiles("./src/events")
+	const eventFiles = getJsFiles('./src/events')
 
 	eventFiles.forEach((eventFile) => {
 		const event = getFile(`./src/events/${eventFile}`)

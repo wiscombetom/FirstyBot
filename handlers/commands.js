@@ -1,13 +1,13 @@
-const { getFiles } = require("../util/functions")
-const fs = require("fs")
+const { getFiles } = require('../util/functions')
+const fs = require('fs')
 
 module.exports = (bot, reload) => {
 	const { client } = bot
 
-	fs.readdirSync("./commands/").forEach((category) => {
-		let commands = getFiles(`./commands/${category}`, ".js")
+	fs.readdirSync('./commands/').forEach((category) => {
+		const commands = getFiles(`./commands/${category}`, '.js')
 
-		commands.forEach((f, i) => {	
+		commands.forEach((f, i) => {
 			if (reload) {
 				delete require.cache(require.resolve(`../commands/${f}`))
 			}

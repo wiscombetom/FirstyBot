@@ -1,9 +1,9 @@
 module.exports = {
-	name: "ping",
-	category: "info",
+	name: 'ping',
+	category: 'info',
 	permissions: [],
 	devOnly: false,
-	run: async ({client, message, args}) => {
-		message.reply("PONG!")
-	}
+	run: async ({ message }) => {
+		message.reply('PONG!')
+	},
 }

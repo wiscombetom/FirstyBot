@@ -1,10 +1,10 @@
 module.exports = {
-	name: "role",
+	name: 'role',
 	run: async (bot, interaction, parameters) => {
 		if (!interaction.guild) {
 			interaction.reply({
-				content: "This command can only be used in a guild!",
-				ephemeral: true
+				content: 'This command can only be used in a guild!',
+				ephemeral: true,
 			})
 			return
 		}
@@ -12,8 +12,8 @@ module.exports = {
 		const role = await interaction.guild.roles.fetch(roleId)
 		if (!role) {
 			interaction.reply({
-				content: "Role not found",
-				ephemeral: true
+				content: 'Role not found',
+				ephemeral: true,
 			})
 			return
 		}
@@ -22,15 +22,15 @@ module.exports = {
 			await member.roles.remove(role.id)
 			interaction.reply({
 				content: `Role ${role.name} removed`,
-				ephemeral: true
+				ephemeral: true,
 			})
 			return
 		}
 		await member.roles.add(role.id)
 		interaction.reply({
 			content: `Role ${role.name} added`,
-			ephemeral: true
+			ephemeral: true,
 		})
 		return
-	}
+	},
 }

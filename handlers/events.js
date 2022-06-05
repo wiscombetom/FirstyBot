@@ -1,11 +1,11 @@
-const { getFiles } = require("../util/functions")
+const { getFiles } = require('../util/functions')
 
 module.exports = (bot, reload) => {
 	const { client } = bot
-	let events = getFiles("./events/", ".js")
+	const events = getFiles('./events/', '.js')
 
 	if (events.length === 0) {
-		console.log("No events to load")
+		console.log('No events to load')
 	}
 
 	events.forEach((f, i) => {
@@ -29,10 +29,12 @@ function triggerEventHandler(bot, event, ...args) {
 	try {
 		if (client.events.has(event)) {
 			client.events.get(event).run(bot, ...args)
-		} else {
+		}
+		else {
 			throw new Error(`Event ${event} does not exist`)
 		}
-	} catch (err) {
+	}
+	catch (err) {
 		console.error(err)
 	}
 }
@@ -40,19 +42,19 @@ function triggerEventHandler(bot, event, ...args) {
 function initEvents(bot) {
 	const { client } = bot
 
-	client.on("ready", () => {
-		triggerEventHandler(bot, "ready")
+	client.on('ready', () => {
+		triggerEventHandler(bot, 'ready')
 	})
 
-	client.on("messageCreate", (message) => {
-		triggerEventHandler(bot, "messageCreate", message)
+	client.on('messageCreate', (message) => {
+		triggerEventHandler(bot, 'messageCreate', message)
 	})
 
-	client.on("interactionCreate", (interaction) => {
-		triggerEventHandler(bot, "interactionCreate", interaction)
+	client.on('interactionCreate', (interaction) => {
+		triggerEventHandler(bot, 'interactionCreate', interaction)
 	})
 
-	client.on("guildMemberAdd", (member) => {
-		triggerEventHandler(bot, "guildMemberAdd", member)
+	client.on('guildMemberAdd', (member) => {
+		triggerEventHandler(bot, 'guildMemberAdd', member)
 	})
 }
